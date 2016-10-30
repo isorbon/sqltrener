@@ -7,6 +7,7 @@
         <%= f.text_field :login ,placeholder:"Логин"%>
         <%= f.password_field :password ,placeholder: "Пароль"%>
         <p>
+         <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
         <div class="g-recaptcha" data-sitekey="6LdQKwoUAAAAALL_V1TeAxtVwaXcnjeALX06vBcu" style="transform:scale(0.88);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
         </p>
         <%= f.submit "Войти", class: "button" %>

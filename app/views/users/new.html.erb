@@ -11,15 +11,33 @@
           <%= f.text_field :login ,placeholder: 'Логин'%>
           <%= f.password_field :password ,placeholder: 'Пароль'%>
           <%= f.password_field :password_req ,placeholder: 'Повторите пароль'%>
-          <p>
+          <p id="sj">
           <div class="g-recaptcha" data-sitekey="6LdQKwoUAAAAALL_V1TeAxtVwaXcnjeALX06vBcu" style="transform:scale(0.88);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
           </p>
-
           <%= f.submit 'Войти', class: "button" %>
       <% end %>
-      <p class="message">Вы зарегестрированы ?<%= link_to "Войдите", signin_path %></p>
+      <p class="message">Вы зарегестрированы ?<%= link_to "Войти", signin_path %></p>
 
     </form>
 
   </div>
 </div>
+
+<script>
+  $(document).ready(function () {
+    $('.register-form1').validate({
+      debug: true,
+      rules: {
+        'user[fname]': {required: true},
+        'user[lname]': {required: true},
+        'user[login]': {required: true, minlength: 6},
+    'user[password]': {required: true, minlength: 6},
+    'user[password_req]': {required: true, equalTo: '#user_password'},
+  }
+
+  });
+    $('.register-form1').submit(function(){
+      $(this).find('.submit').prop('disabled',true);
+    });
+  });
+</script>
