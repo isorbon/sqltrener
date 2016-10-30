@@ -1,2 +1,25 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:title, 'Sign up') %>
+<div class="login-page">
+  <div class="form">
+    <form class="register-form1">
+      <h2 class="form-signin-heading">Введите данные коректно</h2>
+      <%= form_for(@user,class: 'register-form') do |f| %>
+          <%= f.text_field :fname ,placeholder: "Имя" %>
+          <%= f.text_field :lname  ,placeholder: 'Фамилия'%>
+          <%= f.file_field :img, accept: 'image/*' ,placeholder: 'Аватар пользователя'%>
+          <%= f.text_field :typ ,placeholder: 'особый код' %>
+          <%= f.text_field :login ,placeholder: 'Логин'%>
+          <%= f.password_field :password ,placeholder: 'Пароль'%>
+          <%= f.password_field :password_req ,placeholder: 'Повторите пароль'%>
+          <p>
+          <div class="g-recaptcha" data-sitekey="6LdQKwoUAAAAALL_V1TeAxtVwaXcnjeALX06vBcu" style="transform:scale(0.88);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+          </p>
+
+          <%= f.submit 'Войти', class: "button" %>
+      <% end %>
+      <p class="message">Вы зарегестрированы ?<%= link_to "Войдите", signin_path %></p>
+
+    </form>
+
+  </div>
+</div>
