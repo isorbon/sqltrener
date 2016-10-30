@@ -4,6 +4,7 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.register-form .error { color:red}
 @import "bootstrap-sprockets";
 @import "bootstrap";
 .login-page {
@@ -59,7 +60,7 @@
   text-decoration: none;
 }
 .form .register-form {
-  display: none;
+  display: block;
 }
 .container {
   position: relative;
