@@ -1,0 +1,62 @@
+ <% @use = current_user  %>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-3">
+
+      <div class="user-wrapper">
+        <%= image_tag(@use.img,:class=>"img-responsive" )	  %>
+        <div class="description">
+          <h4> <%= @use.fname+" "+@use.lname %></h4>
+          <h5> <strong> <% if @use.typ == 0 %>
+            <%=  'Студент' %>
+                <% else%>
+                <%=  'Автор' %>
+                <%end %> </strong></h5>
+          <h6>
+  LOGIN: <%=@use.login %>
+          </h6>
+          <hr />
+          <a href="#" class="btn btn-danger btn-sm"> <i class="fa fa-user-plus" ></i> &nbsp;Profile + </a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+</div>
+<style>
+
+  body {
+    font-family: Verdana;
+    background-color: #EAEAEA;
+  }
+
+  /* USER PROFILE STYLES */
+
+  .user-wrapper .btn {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    margin: 5px;
+  }
+
+  .user-wrapper .description {
+    padding: 25px;
+    background-color: #fff;
+  }
+  .user-wrapper img {
+
+    width:100%;
+  }
+
+</style>
+<script>
+  $( function() {
+    $( ".row" ).draggable();
+  } );
+</script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

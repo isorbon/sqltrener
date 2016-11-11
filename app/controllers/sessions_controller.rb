@@ -4,23 +4,41 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_login(session_params[:login])
-    if user && user.authenticate(params[:session][:password])
-      sign_in user
-
+  if user && authenticate(session_params[:login],session_params[:password])
+      session[:user_id] = user.id
+      session[:typ] = user.typ
+      if user.typ== 0
+        redirect_to im_path
+      else
+        redirect_to tour_path
+      end
     else
-      flash.now[:error] = "Invalid email/password combination"
       render 'new'
     end
   end
 
   def destroy
-    #sign_out
-    redirect_to root_path
+        session[:user_id] =nil
+        redirect_to root_path
   end
 
   private
-  def session_params
-    params.require(:user).permit(:login,:password)
+  def encrypt(str)
+    if  str.nil? == false
+      temp=Digest::SHA1.hexdigest str.reverse+(Digest::SHA1.hexdigest str)
+      return Digest::SHA1.hexdigest (temp.reverse+str)
+    end
   end
-
+  def session_params
+    sgh= params.permit(:login,:password)
+    return {login: sgh[:login],password:encrypt(sgh[:password])}
+  end
+  def authenticate(login, password)
+    user = User.find_by_login(login)
+    if user && user[:password] == password
+      user
+    else
+      nil
+    end
+  end
 end

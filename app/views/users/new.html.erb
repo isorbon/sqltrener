@@ -2,20 +2,21 @@
 <div class="login-page">
   <div class="form">
       <h2 class="form-signin-heading">Введите данные коректно</h2>
-    <%= form_tag({:controller => "users", :action => "new"}, :method => "post", :class => "register-form") do  %>
-          <%= text_field_tag :fname ,nil,placeholder: "Имя" %>
+        <%= form_tag('signup', :class => "register-form") do  %>
+          <%= text_field_tag :fname ,nil,placeholder: 'Имя' %>
           <%= text_field_tag :lname  ,nil,placeholder: 'Фамилия'%>
-          <%= text_field_tag :typ ,nil,placeholder: 'особый код' %>
+          <%= select_tag :typ, "<option >Тип пользователя</option><option value='1'>Автор</option><option value='0'>Пользователь</option>".html_safe%>
+          <%=  url_field_tag :img ,nil,placeholder: 'URL картинки'%>
           <%= text_field_tag :login ,nil,placeholder: 'Логин'%>
           <%= password_field_tag :password ,nil,placeholder: 'Пароль'%>
           <%= password_field_tag :password_req ,nil,placeholder: 'Повторите пароль'%>
-           <p >
+         <p >
           <div id="ppp" name="ppp" class="g-recaptcha" data-sitekey="6LdQKwoUAAAAALL_V1TeAxtVwaXcnjeALX06vBcu"  data-callback="onReturnCallback" style="transform:scale(0.88);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
         <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
           </p>
           <%= submit_tag 'Войти', class: "button" %>
       <% end %>
-      <p class="message">Вы зарегестрированы ?<%= link_to "Войти", signin_path, method: :post %></p>
+      <p class="message">Вы зарегестрированы ? <%= link_to "Войти", signin_path, method: :post %></p>
   </div>
 </div>
 
@@ -34,18 +35,18 @@
         },
         lname: {
           required: true,
-          minlength: 3,
+          minlength: 2,
           pattern: /^[a-zA-Zа-яА-Я]*$/
         },
         password: {
           required: true,
           minlength: 5,
-          maxlength:10,
+          maxlength:15,
           pattern: /^[a-zA-Z0-9]*$/
         },login:{
           required: true,
           minlength: 5,
-          maxlength:10,
+          maxlength:15,
           pattern: /^[a-zA-Z0-9]*$/
         },
         password_req: {
@@ -56,9 +57,9 @@
           equalTo: "#password"
         },
         typ:
-        {
-          pattern: /^[0-9]*$/,
-          maxlength:3
+        {required: true,
+          pattern: /^[0-1]*$/,
+          maxlength:1
         },
         "hiddenRecaptcha": {
           required: function() {

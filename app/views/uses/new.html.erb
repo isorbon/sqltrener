@@ -1,0 +1,13 @@
+<% provide(:title, 'toor') %>
+<div class="login-page">
+  <div class="form">
+    <h2 class="form-signin-heading">Введите секретный ключ</h2>
+    <%= form_tag('tour', :method => "post", :class => "login-form") do  %>
+          <%= password_field_tag(:secret ,nil,placeholder: 'Секретный код') %>
+        <p >
+        <div  class="g-recaptcha" data-sitekey="6LdQKwoUAAAAALL_V1TeAxtVwaXcnjeALX06vBcu"  style="transform:scale(0.88);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+        </p>
+        <%= submit_tag( "Войти", class: "button") %>
+    <% end %>
+  </div>
+</div>

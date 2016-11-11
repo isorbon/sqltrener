@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
 
+
+
+
   root to: 'altair#home'
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :users #,only:[:new]
-  match '/signup',  to: 'users#new', via: :post
-  match '/signin',   to: 'sessions#new', via: :post
-  match '/signup',  to: 'users#new', via: :get
-  match '/signin',   to: 'sessions#new', via: :get
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/signup',   to: 'users#new'
+  get '/signin',   to: 'sessions#new'
+  get '/im',   to: 'users#show'
+  post '/signin', to: 'sessions#create'
+  post '/signup',   to: 'users#create'
+  get '/home',   to: 'altair#home'
+  get '/about',   to: 'altair#about'
+  get '/help',   to: 'altair#help'
+  get '/contact',   to: 'altair#contact'
+  get '/theory',   to: 'altair#theory'
+  get '/admin',to: 'admin#show'
+  get '/admin',to: 'admin#show'
+  get '/tour',to: 'uses#new'
+  post '/tour',to: 'uses#create'
+  get 'uses/db_con'
+
+
 end

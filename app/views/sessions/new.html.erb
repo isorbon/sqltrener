@@ -2,7 +2,7 @@
 <div class="login-page">
 <div class="form">
     <h2 class="form-signin-heading">Пожалуйста войдите</h2>
-    <%= form_tag({:controller => "sessions", :action => "new"}, :method => "post", :class => "login-form") do  %>
+    <%= form_tag('signin', :method => "post", :class => "login-form") do  %>
         <%= text_field_tag(:login ,nil,placeholder: 'Логин') %>
         <%= password_field_tag(:password ,nil,placeholder: 'Пароль') %>
       <p >
@@ -12,7 +12,6 @@
         <%= submit_tag( "Войти", class: "button") %>
     <% end %>
     <p class="message">Не зарегистрированы?<%= link_to ' Зарегистрируйтесь!', signup_path, method: :post %></p>
-
 </div>
 </div>
 <script>
@@ -24,12 +23,12 @@
         password: {
           required: true,
           minlength: 5,
-          maxlength:10,
+          maxlength:15,
           pattern: /^[a-zA-Z0-9]*$/
         },login:{
           required: true,
           minlength: 5,
-          maxlength:10,
+          maxlength:15,
           pattern: /^[a-zA-Z0-9]*$/
         },
         "hiddenRecaptcha": {

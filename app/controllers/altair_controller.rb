@@ -1,6 +1,6 @@
 class AltairController < ApplicationController
   def home
-
+    flash[:notice] = "Post successfully created"
   end
 
   def help
