@@ -1,21 +1,8 @@
-/*
-    Theme Name: Mamba
-    Theme URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-*/
-/* ================================
-Imports
-================================= */
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800);
 @import url('font-awesome.min.css');
 @import url('overwrite.css');
 @import url('dlmenu.css');
 @import url('animate.css');
-
-/* ================================
-General
-================================= */
 body{
 	margin:0;
 	padding:0;
@@ -23,6 +10,7 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	line-height: 1.6em;
+
 	
 }
 
@@ -109,64 +97,6 @@ margin, padding
 }
 .mar-top40 {
 	margin-top: 40px;
-}
-
-
-
-/* ================================
-Home sections
-================================= */
-
-.home-section {
-	width: 100%;
-	padding: 90px 0px 150px 0px;
-}
-
-/* --- heading --- */
-.section-heading {
-	margin-bottom: 70px;
-}
-	
-.section-heading h2 {
-	font-size: 38px;
-	text-transform: uppercase;
-}
-	
-.section-heading .heading-line {
-	margin:0 auto;
-	display: block;
-	height: 1px;
-	width: 80px;
-	background: #333;
-	margin-top: 10px;
-	margin-bottom: 20px;
-}
-
-	
-/* --- section bg var --- */
-
-.bg-white {
-	background: #fff;
-}
-
-.bg-gray {
-	background: #f8f8f8;
-}
-
-.bg-dark {
-	background: #575757;
-}
-
-
-/* --- section content general color --- */
-
-.color-light h1,.color-light h2,.color-light h3,.color-light h4,.color-light h5,.color-light h6 {
-	color: #fff;
-}
-
-
-.color-light p {
-	color: #eee;
 }
 
 

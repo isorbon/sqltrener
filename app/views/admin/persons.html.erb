@@ -1,0 +1,43 @@
+<%= render 'maket' %>
+<%@users=User.all %>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>№</th>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Логин</th>
+      <th>Статус</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= user.id %>
+      </td>
+
+    <td>
+      <%= user.fname %>
+    </td>
+        <td>
+      <%= user.lname %>
+        </td>
+        <td>
+      <%= user.login %>
+        </td>
+      <td>
+        <% if user.status_user== 1  %>
+        Пользователь
+        <%	else  %>
+          Автор
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+

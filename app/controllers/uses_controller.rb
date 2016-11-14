@@ -1,21 +1,26 @@
 class UsesController < ApplicationController
   def new
   end
-
   def db_con
+    if session[:status_user]!=1
+      redirect_to home_path
+    end
   end
-
-  def create
-    @uses = Use.find_by_secret(sj_params[:secret])
-    if @uses && session[:user_id]!=nil&&session[:typ]==1
-        redirect_to admin_path
+  def update
+    if Use.update(use_param)
+      redirect_to admin_path
     else
-      render 'new'
+      render 'db_con'
     end
-    end
+  end
   private
-  def sj_params
-    sgh= params.permit(:secret,:'g-recaptcha-response')
-    return {secret:(sgh[:secret])}
+  def use_param
+    sgh= params.permit(:gemn,:user_name,:password,:host,:db,:dtp)
+    if sgh[:dtp] == 'sj1'
+      return {db_base: "#{sgh[:gemn]}://#{sgh[:user_name]}:#{sgh[:password]}@#{sgh[:host]}/#{sgh[:db]}"}
+      elsif sgh[:dtp] == 'sj2'
+      return {db_shadow: "#{sgh[:gemn]}://#{sgh[:user_name]}:#{sgh[:password]}@#{sgh[:host]}/#{sgh[:db]}"}
+    end
   end
 end
+

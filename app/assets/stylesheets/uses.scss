@@ -1,3 +1,22 @@
 // Place all the styles related to the uses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: Verdana;
+  background-color: #EAEAEA;
+}
+.user-wrapper .btn {
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  margin: 5px;
+}
+
+.user-wrapper .description {
+  padding: 25px;
+  background-color: #fff;
+}
+.user-wrapper img {
+  width:100%;
+}

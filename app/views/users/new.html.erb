@@ -5,7 +5,7 @@
         <%= form_tag('signup', :class => "register-form") do  %>
           <%= text_field_tag :fname ,nil,placeholder: 'Имя' %>
           <%= text_field_tag :lname  ,nil,placeholder: 'Фамилия'%>
-          <%= select_tag :typ, "<option >Тип пользователя</option><option value='1'>Автор</option><option value='0'>Пользователь</option>".html_safe%>
+          <%= select_tag :status_user, "<option >Тип пользователя</option><option value='1'>Автор</option><option value='0'>Пользователь</option>".html_safe%>
           <%=  url_field_tag :img ,nil,placeholder: 'URL картинки'%>
           <%= text_field_tag :login ,nil,placeholder: 'Логин'%>
           <%= password_field_tag :password ,nil,placeholder: 'Пароль'%>
@@ -56,7 +56,7 @@
           pattern: /^[a-zA-Z0-9]*$/,
           equalTo: "#password"
         },
-        typ:
+        status_user:
         {required: true,
           pattern: /^[0-1]*$/,
           maxlength:1

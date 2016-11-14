@@ -1,62 +1,43 @@
- <% @use = current_user  %>
-
-  <div class="row">
+<style>
+  .console{
+    color:  #FFFF66;
+    margin-bottom: 0%;
+    border-radius: 5px;
+    resize: none;
+    overflow-x:hidden;
+    overflow-y:hidden;
+  }
+</style>
+<% @use = current_user  %>
+ <% if @use !=nil %>
+    <div class="console">
+    <div class="row">
     <div class="col-md-3 col-sm-3">
-
       <div class="user-wrapper">
         <%= image_tag(@use.img,:class=>"img-responsive" )	  %>
         <div class="description">
-          <h4> <%= @use.fname+" "+@use.lname %></h4>
-          <h5> <strong> <% if @use.typ == 0 %>
+          <h3> <%= @use.fname+' '+@use.lname %></h3>
+          <h5> <strong> <% if @use.status_user == 0 %>
             <%=  'Студент' %>
                 <% else%>
                 <%=  'Автор' %>
                 <%end %> </strong></h5>
           <h6>
-  LOGIN: <%=@use.login %>
+          LOGIN: <%=@use.login %>
           </h6>
           <hr />
-          <a href="#" class="btn btn-danger btn-sm"> <i class="fa fa-user-plus" ></i> &nbsp;Profile + </a>
-        </div>
+          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span>".html_safe, signout_path, method: :get   %>
+        </div>  
       </div>
     </div>
 
-
-
-
 </div>
-<style>
-
-  body {
-    font-family: Verdana;
-    background-color: #EAEAEA;
-  }
-
-  /* USER PROFILE STYLES */
-
-  .user-wrapper .btn {
-    border-radius: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    margin: 5px;
-  }
-
-  .user-wrapper .description {
-    padding: 25px;
-    background-color: #fff;
-  }
-  .user-wrapper img {
-
-    width:100%;
-  }
-
-</style>
-<script>
-  $( function() {
-    $( ".row" ).draggable();
-  } );
-</script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </div>
+<%else %>
+    <div class="container" style="background-attachment: black;color: azure">
+          <div class="alert alert">Нет такого пользователя!!!
+            Войдите в систему !!!
+            <%= link_to "Войти", signin_path, method: :get %></p>
+          </div>
+    </div>
+ <% end %>

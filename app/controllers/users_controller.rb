@@ -4,30 +4,21 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to signin_path
-    else
-      render 'new'
+          redirect_to signin_path
+          else
+          render 'new'
     end
   end
-
   private
-  def encrypt(str)
-    if  str.nil? == false
-      temp=Digest::SHA1.hexdigest str.reverse+(Digest::SHA1.hexdigest str)
-      return Digest::SHA1.hexdigest (temp.reverse+str)
-    end
-  end
   def user_params
-    sgh= params.permit(:fname,:lname,:login,:password,:img,:typ)
-    if sgh[:typ]==1
-    @us=Use.new({secret: (sgh[:password].reverse.upcase)})
-      @us.save
+    sgh= params.permit(:fname,:lname,:login,:password,:img,:status_user)
+    if sgh[:status_user]=='1'
+      return {fname: sgh[:fname],lname: sgh[:lname],login: sgh[:login],password:encrypt(sgh[:password]),secret:encrypt(sgh[:password].reverse.swapcase),img: sgh[:img],status_user: sgh[:status_user]}
+    elsif sgh[:status_user]=='0'
+      return {fname: sgh[:fname],lname: sgh[:lname],login: sgh[:login],password:encrypt(sgh[:password]),img: sgh[:img],status_user: sgh[:status_user]}
     end
-
-    return {fname: sgh[:fname],lname: sgh[:lname],login: sgh[:login],password:encrypt(sgh[:password]),img: sgh[:img],typ: sgh[:typ]}
   end
 end
