@@ -1,0 +1,2 @@
+class Tpublic < ApplicationRecord
+end

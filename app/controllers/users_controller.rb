@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -12,6 +13,15 @@ class UsersController < ApplicationController
           render 'new'
     end
   end
+  def update
+    if User.update(user_params)
+      redirect_to admin_path
+    else
+      render 'admin/edit'
+    end
+  end
+
+
   private
   def user_params
     sgh= params.permit(:fname,:lname,:login,:password,:img,:status_user)
@@ -19,6 +29,8 @@ class UsersController < ApplicationController
       return {fname: sgh[:fname],lname: sgh[:lname],login: sgh[:login],password:encrypt(sgh[:password]),secret:encrypt(sgh[:password].reverse.swapcase),img: sgh[:img],status_user: sgh[:status_user]}
     elsif sgh[:status_user]=='0'
       return {fname: sgh[:fname],lname: sgh[:lname],login: sgh[:login],password:encrypt(sgh[:password]),img: sgh[:img],status_user: sgh[:status_user]}
+    else
+      return {fname: sgh[:fname],lname: sgh[:lname],login: sgh[:login],password:encrypt(sgh[:password]),img: sgh[:img]}
     end
   end
 end

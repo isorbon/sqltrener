@@ -1,0 +1,16 @@
+<%= render 'maket' %>
+<div class="login-page">
+  <h2>Редактировать</h2>
+  <div class="form">
+    <%= form_tag('upd', :class => "register-form") do  %>
+        <%= text_field_tag :fname ,@user.fname,placeholder: 'Имя' %>
+        <%= text_field_tag :lname  ,@user.lname,placeholder: 'Фамилия'%>
+        <%=  url_field_tag :img ,@user.img,placeholder: 'URL картинки'%>
+        <%= text_field_tag :login ,@user.login,placeholder: 'Логин'%>
+        <%= password_field_tag :password ,nil,placeholder: 'Пароль'%>
+        <%= password_field_tag :password_req ,nil,placeholder: 'Повторите пароль'%>
+        <%= submit_tag 'Обновить', class: "button" %>
+    <% end %>
+  </div>
+</div>
+
