@@ -1,8 +1,5 @@
 class BlockController < ApplicationController
   def show
-    if  session[:status_user]!=1
-        redirect_to home_path
-    end
   end
   def create
     @uses = User.find_by_secret(sj_params[:secret])

@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
         session[:status_user] =nil
         redirect_to root_path
   end
-
   private
     def session_params
     sgh= params.permit(:login,:password)

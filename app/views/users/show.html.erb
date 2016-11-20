@@ -1,5 +1,7 @@
+<%= render 'layouts/scrip' %>
 <style>
-  .console{
+  .console
+  {
     color:  #FFFF66;
     margin-bottom: 0%;
     border-radius: 5px;
@@ -22,6 +24,9 @@
                 <% else%>
                 <%=  'Автор' %>
                 <%end %> </strong></h5>
+          <p>
+            <%= link_to 'edit',edit_path(current_user)	,method: :post  %>
+          </p>
           <h6>
           LOGIN: <%=@use.login %>
           </h6>
@@ -30,7 +35,6 @@
         </div>
       </div>
     </div>
-
 </div>
     </div>
 <%else %>

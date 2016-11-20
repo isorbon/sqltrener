@@ -1,3 +1,5 @@
+<%= render 'layouts/scrip' %>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <% provide(:title, 'Sign in') %>
 <div class="login-page">
 <div class="form">
@@ -11,7 +13,7 @@
       </p>
         <%= submit_tag( "Войти", class: "button") %>
     <% end %>
-    <p class="message">Не зарегистрированы?<%= link_to ' Зарегистрируйтесь!', signup_path, method: :post %></p>
+    <p class="message">Не зарегистрированы?<%= link_to ' Зарегистрируйтесь!', signup_path, method: :get %></p>
 </div>
 </div>
 <script>

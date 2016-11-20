@@ -1,4 +1,6 @@
+<%= render 'layouts/scrip' %>
 <% provide(:title, 'Sign up') %>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="login-page">
   <div class="form">
       <h2 class="form-signin-heading">Введите данные коректно</h2>
@@ -10,14 +12,14 @@
           <%= text_field_tag :login ,nil,placeholder: 'Логин'%>
           <%= password_field_tag :password ,nil,placeholder: 'Пароль'%>
           <%= password_field_tag :password_req ,nil,placeholder: 'Повторите пароль'%>
-         <p >
-          <div id="ppp" name="ppp" class="g-recaptcha" data-sitekey="6LdQKwoUAAAAALL_V1TeAxtVwaXcnjeALX06vBcu"  data-callback="onReturnCallback" style="transform:scale(0.88);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
-        <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
-          </p>
+        <p >
+            <div id="ppp" name="ppp" class="g-recaptcha" data-sitekey="6LdQKwoUAAAAALL_V1TeAxtVwaXcnjeALX06vBcu"  data-callback="onReturnCallback" style="transform:scale(0.88);-webkit-transform:scale(0.89);transform-origin:0 0;-webkit-transform-origin:0 0;"></div>
+            <input type="hidden" class="hiddenRecaptcha required" name="hiddenRecaptcha" id="hiddenRecaptcha">
+        </p>
           <%= submit_tag 'Войти', class: "button" %>
       <% end %>
       <p class="message">Вы зарегестрированы ? <%= link_to "Войти", signin_path, method: :post %></p>
-  </div>
+  </div>\
 </div>
 
 

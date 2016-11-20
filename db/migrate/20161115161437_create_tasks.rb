@@ -6,7 +6,7 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.integer :cat_id
       t.integer :mark
       t.integer :user_id
-
+      t.integer :time
       t.timestamps
     end
   end

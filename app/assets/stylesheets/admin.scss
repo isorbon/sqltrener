@@ -3,59 +3,76 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 .container {
-  padding: 80px 120px;
+  padding:80px 120px;
 }
 
-@media (max-width: 600px) {
-  .carousel-caption {
-    display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-  }
-}
 .bg-1 {
-  background: #2d2d30;
-  color: #bdbdbd;
+  background:#2d2d30;
+  color:#bdbdbd;
 }
-.bg-1 h3 {color: #fff;}
-.bg-1 p {font-style: italic;}
+
+.bg-1 h3 {
+  color:#fff;
+}
+
+.bg-1 p {
+  font-style:italic;
+}
+
 .list-group-item:first-child {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+  border-top-right-radius:0;
+  border-top-left-radius:0;
 }
+
 .list-group-item:last-child {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
 }
+
 .thumbnail {
-  padding: 0 0 15px 0;
-  border: none;
-  border-radius: 0;
+  border:none;
+  border-radius:0;
+  padding:0 0 15px;
 }
+
 .thumbnail p {
-  margin-top: 15px;
-  color: #555;
+  margin-top:15px;
+  color:#555;
 }
+
 .btn {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #f1f1f1;
-  border-radius: 0;
-  transition: .2s;
+  background-color:#333;
+  color:#f1f1f1;
+  border-radius:0;
+  transition:.2s;
+  padding:10px 20px;
 }
-.btn:hover, .btn:focus {
-  border: 1px solid #333;
-  background-color: #fff;
-  color: #000;
+
+.btn:hover,.btn:focus {
+  border:1px solid #333;
+  background-color:#fff;
+  color:#000;
 }
-.modal-header, h4, .close {
-  background-color: #333;
-  color: #fff !important;
-  text-align: center;
-  font-size: 30px;
+
+.modal-header,h4,.close {
+  background-color:#333;
+  color:#fff!important;
+  text-align:center;
+  font-size:30px;
 }
-.modal-header, .modal-body {
-  padding: 40px 50px;
+
+.modal-header,.modal-body {
+  padding:40px 50px;
 }
+
 .nav-tabs li a {
-  color: #777;
+  color:#777;
+}
+
+@media (max-width 600px) {
+                      .carousel-caption {
+                        display:none;
+                      }
 }

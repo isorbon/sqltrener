@@ -1,0 +1,50 @@
+<%= render 'tasks/maket' %>
+<style>
+  table{
+    background: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius:  10px;
+    -khtml-border-radius:10px;
+  }
+</style>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <% $i = 0
+         while $i<Basic.connection.columns(@tabnam).map(&:name).length do%>
+          <th>
+            <%=
+              Basic.connection.columns(@tabnam).map(&:name)[$i]
+            %></th>
+      <%
+        $i=$i+1
+        end %>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+      res=Basic.connection().execute("select * from #{@tabnam}") %>
+          <%
+            res.each do |row|%>
+            <tr>
+
+              <% $i = 0
+                 while $i<Basic.connection.columns(@tabnam).map(&:name).length do%>
+                  <td>
+                    <%=
+                      row[$i]
+                    %></td>
+              <%
+                $i=$i+1
+                end %>
+            </tr>
+            <%	 end %>
+    </tbody>
+  </table>
+</div>
+
+

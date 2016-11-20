@@ -1,0 +1,77 @@
+<style>
+  table{
+    background: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius:  10px;
+    -khtml-border-radius:10px;
+  }
+
+</style>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+          <th>
+      №
+          </th>
+      <th>
+        Вопрос
+      </th>
+      <th>
+        Ответ
+      </th>
+      <th>
+        Категория
+      </th>
+
+      <th>
+      Оценка
+      </th>
+      <th>
+      Автор
+      </th>
+      <th>
+        Время
+      </th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <%
+      @tasks=Task.all
+      @tasks.each do |cat| %>
+        <tr>
+          <td>
+            <%=
+              link_to  "#{cat.id}" ,taske_path(cat.id),method: :post %>
+          </td>
+          <td>
+            <abbr title="<%= cat.ask %>"><%= cat.ask[0,15] %></abbr>
+          </td>
+          <td>
+            <abbr title="<%= cat.answer %>"><%= cat.answer[0,15] %></abbr>
+          </td>
+          <td>
+            <%= cat.cat_id %>
+          </td>
+          <td>
+            <%= cat.mark %>
+          </td>
+          <td>
+            <%= cat.user_id %>
+          </td>
+          <td>
+            <%= link_to  "Удалить" ,taskd_path(cat.id),method: :post %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+

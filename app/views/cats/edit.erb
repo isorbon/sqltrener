@@ -1,0 +1,15 @@
+<%=	render 'admin/maket'  %>
+<% provide(:title, 'Котегории') %>
+<div class="login-page">
+  <div class="form">
+    <h2 class="form-signin-heading">Добавления категории</h2>
+    <%= form_tag('categoryu', :class => "register-form") do  %>
+        <%= hidden_field_tag :id ,params[:format] %>
+        <%= text_field_tag :name ,nil,placeholder: 'Названия категории' %>
+        <%= submit_tag 'Обнавить', class: "button" %>
+    <% end %>
+    <%= render 'tables' %>
+  </div>
+
+</div>
+

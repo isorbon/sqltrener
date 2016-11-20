@@ -1,2 +1,2 @@
-class Cat < ApplicationRecord
+  class Cat < ApplicationRecord
 end

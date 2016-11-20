@@ -1,0 +1,48 @@
+<style>
+  body{
+    background: #8dcb36;
+  }
+
+    table{
+      background: #ffffff;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius:  10px;
+      -khtml-border-radius:10px;
+    }
+
+</style>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <%=link_to 'SQL тренер Админ', admin_path,method: :get,:class=> "navbar-brand"	  %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%=link_to 'Присоединить бд',db_path,method: :get	  %>
+        </li>
+        <li>
+          <%= @use= 'Конструктор задач'
+              link_to @use,taskm_path, method: :get	%>
+        </li>
+        <li>
+          <%= @use= 'Категории задач'
+              link_to @use,category_path,method: :get	%>
+        </li>
+
+               <li>
+                 <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span>".html_safe, signout_path, method: :get   %>
+               </li>
+      </ul>
+    </div>
+  </div>
+</nav>

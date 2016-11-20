@@ -1,0 +1,44 @@
+<link href="css/style.css" rel="stylesheet" media="screen">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%=link_to 'SQL TRENER',home_path,method: :get,class: "navbar-brand"	  %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%=link_to 'Войти',signin_path,method: :get	 %>
+        </li>
+        <li>
+          <%=link_to 'SQL',theory_path,method: :get	 %>
+        </li>
+        <li>
+          <%=link_to 'Помощь',help_path,method: :get	 %>
+        </li>
+        <li>
+          <%=link_to 'О нас',about_path,method: :get	 %>
+        </li>
+        <li>
+          <%=link_to 'Контакт',contact_path,method: :get	 %>
+        </li>
+        <li>
+          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span>".html_safe, signout_path, method: :get   %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<style>
+  #intro{
+
+    background-color: #287649;
+  }
+    body{
+      background-color: #287649;
+    }
+</style>
