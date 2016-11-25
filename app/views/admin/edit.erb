@@ -8,7 +8,8 @@
         <%= text_field_tag :login ,@user.login,placeholder: 'Логин'%>
         <%= password_field_tag :password ,nil,placeholder: 'Пароль'%>
         <%= password_field_tag :password_req ,nil,placeholder: 'Повторите пароль'%>
-        <%= submit_tag 'Обновить', class: "button" %>
+        <%= hidden_field_tag :formati, params[:format] %>
+        <%= submit_tag 'Обнавить', class: "button" %>
     <% end %>
   </div>
 </div>

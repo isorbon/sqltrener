@@ -1,6 +1,24 @@
 <%= render 'maket' %>
+<style>
+  table{
+    margin-top: 10%;
+    background: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius:  10px;
+    -khtml-border-radius:10px;
+  }
+
+</style>
+
+
 <%@users=User.all %>
-<div class="container">
+<div style="margin-left: 10%;margin-right: 10%;" class="page-content inset">
+
+  <div class="row">
+
   <table class="table table-hover">
     <thead>
     <tr>
@@ -16,32 +34,57 @@
     <% @users.each do |user| %>
     <tr>
       <td>
-        <%=
-         link_to  "#{user.id}" ,edit_path(user.id),method: :post %>
-      </td>
+       <abbr title="Редактировать">
+        <h5>
+          <%=
+            link_to  "#{user.id}" , edit_path(Base64.encode64( Base64.encode64(user.id.to_s))),method: :post %>
+        </h5>
+       </abbr>
     <td>
-      <%= user.fname %>
+      <abbr title="<%= user.fname %>">
+        <h5>
+          <%= user.fname[0..12] %>
+        </h5>
+      </abbr>
     </td>
         <td>
-      <%= user.lname %>
+
+          <abbr title="<%= user.lname %>">
+            <h5>
+              <%= user.lname[0..12] %>
+            </h5>
+          </abbr>
+
         </td>
         <td>
-      <%= user.login %>
+          <abbr title="<%= user.login %>">
+            <h5>
+              <%= user.login[0..12] %>
+            </h5>
+          </abbr>
+
         </td>
       <td>
-        <% if user.status_user== 1  %>
+        <% if user.status_user == 1  %>
+          <h5>
             Автор
+          </h5>
         <%	else  %>
-            Пользователь
+            <h5>
+              Пользователь
+            </h5>
+
         <% end %>
       </td>
       <td>
-       <%= link_to  "Удалить" ,del_path(user.id),method: :post %>
+        <h5>
+          <%= link_to  "Удалить" ,del_path(Base64.encode64( Base64.encode64(user.id.to_s))),method: :post %>
+        </h5>
       </td>
     </tr>
     <% end %>
     </tbody>
   </table>
 </div>
-
+</div>
 

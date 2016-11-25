@@ -18,8 +18,10 @@
       <li>
         <% $i = 0
            while $i<Basic.connection.tables.length do%>
-            <%= link_to Basic.connection.tables[$i],tab_path(Basic.connection.tables[$i]),method: :post,:target => "blank"
-            %>
+       <h5>
+         <%= link_to Basic.connection.tables[$i],tab_path(Base64.encode64( Base64.encode64(Basic.connection.tables[$i]))),method: :post,:target => "blank"
+         %>
+       </h5>
         <%
           $i=$i+1
           end %>
@@ -32,7 +34,7 @@
         <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
       </h1>
     </div>
-<%	@tasks= Task.find_by_id(params[:format])  %>
+
     <div class="page-content inset">
       <%=
         form_tag('tasku', :class => "register-form",method: :post) do  %>
@@ -47,10 +49,10 @@
             <%= text_field_tag :mark ,@tasks.mark,placeholder: 'Оценка'%>
           </p>
           <p>
-            <%= text_field_tag :time ,@tasks.ask,placeholder: 'Время в секундах'%>
+            <%= text_field_tag :time ,@tasks.time,placeholder: 'Время в секундах'%>
           </p>
           <p>
-            <%= text_field_tag :lenhy ,@tasks.id,placeholder: 'Время в секундах'%>
+            <%= hidden_field_tag :formati ,params[:format]%>
           </p>
           <p>
             <%= submit_tag 'Обнавить', class: "button" %>

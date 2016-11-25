@@ -22,21 +22,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+
       <%=link_to 'SQL тренер Админ', admin_path,method: :get,:class=> "navbar-brand"	  %>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= @use= 'Список пользователей'
-              link_to @use,sh_path, method: :get	%>
+          <%=link_to 'Создать тест',testn_path ,method: :get	  %>
         </li>
         <li>
-          <%= @use= 'Конструктор задач'
-              link_to @use,taskl_path, method: :get	%>
+          <%= @use= 'Cписок тестов'
+              link_to @use,tests_path , method: :get	%>
         </li>
         <li>
-          <%= @use= 'Конструктор теста'
-              link_to @use,tests_path, method: :get	%>
+          <%= @use= 'Генерировать варианты'
+              link_to @use,tpn_path,method: :get	%>
         </li>
                <li>
                  <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span>".html_safe, signout_path, method: :get   %>

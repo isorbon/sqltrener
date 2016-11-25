@@ -1,41 +1,26 @@
 class AdminController < ApplicationController
-  before_action :set_user, only: [:edit]
-  before_action :tables
-
-  def show
-    chack_ed
-  end
-
-  def edit
-    chack_ed
-  end
-
-  def persons
-    chack_ed
-  end
-  def destroy
-    if User.delete(params[:format])
-      redirect_to admin_path
+before_action :set_user, only: [:edit,:destroy]
+before_action :tables
+    def show
     end
-  end
-
-  def tables
-    if session[:status_user]!=1
-      redirect_to admin_path
-    else
-      @tabnam=(params[:format])
+    def edit
     end
-  end
-
+    def persons
+    end
+    def destroy
+      if @user.destroy
+        redirect_to admin_path
+      else
+        render 'new'
+      end
+    end
+    def tables
+      @tabnam=dec(params[:format])
+    end
   private
-
-  def chack_ed
-    if session[:user_id]!=current_user && session[:status_user]!=1
-      redirect_to home_path
-    end
-  end
-
   def set_user
-    @user = User.find(params[:format])
+    if  dec(params[:format]).to_i !=0
+      @user = User.find(dec(params[:format]).to_i)
+    end
   end
 end

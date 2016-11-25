@@ -4,8 +4,8 @@ class CreateTests < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :description
       t.string :password
-      t.timestamps :start_t
-      t.timestamps
+      t.datetime :start_t
+        t.timestamps
     end
   end
 end

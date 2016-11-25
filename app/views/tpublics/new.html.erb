@@ -1,0 +1,61 @@
+<%=	render 'tests/maket'  %>
+<style>
+  table{
+    background: #ffffff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius:  10px;
+    -khtml-border-radius:10px;
+  }
+
+</style>
+<div class="container">
+  <div class="login-page">
+    <div class="form">
+      <%tl=Test.all%>
+        <%= form_tag(tpn_path, :method => "post", :class => "login-form") do %>
+          <%=select_tag :tid, options_from_collection_for_select(tl, "id", "name") %>
+         <%= text_field_tag(:count ,nil,placeholder: 'количество вариантов' ) %>
+          <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>
+        Категории
+      </th>
+      <th>
+        количество
+      </th>
+      <th>
+        Ввод
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%
+      tp=Cat.joins(:tasks).group("cats.name").count("Tasks.id")
+$k=0
+      tp.each do |cat| %>
+        <tr>
+          <td>
+            <abbr title=" <%= cat[0] %>" > <h5><%= cat[0][0..8] %></h5> </abbr>
+          </td>
+          <td>
+           <h5> <%= cat[1] %></h5>
+          </td>
+          <td>
+            <h5>
+              <%= text_field_tag("id"+$k.to_s ,nil,placeholder: 'число' ) %>
+            </h5>
+          </td>
+        </tr>
+    <% $k+=1
+      end %>
+    </tbody>
+  </table>
+ <%= submit_tag( "генерировать", class: "button") %>
+ <% end %>
+    </div>
+</div>
+</div>

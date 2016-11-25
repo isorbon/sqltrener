@@ -6,12 +6,21 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id])
   end
    private
+  def dec(text)
+    if text.nil? == false
+      return  (Base64.decode64( Base64.decode64( text)))
+    end
+  end
   def encrypt(str)
     if  str.nil? == false
       temp=Digest::SHA1.hexdigest str.reverse+(Digest::SHA1.hexdigest str)
       return Digest::SHA1.hexdigest (temp.reverse+str)
     end
   end
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
 end
 
 

@@ -1,87 +1,16 @@
-<div class="container1">
-  <br><br>
-  <div class="col-md-8 col-md-offset-2">
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-
-    <div class="step well">
-
-
-    </div>
-    <div class="step well">
-      Step 2
-    </div>
-    <div class="step well">
-      Step 3
-    </div>
-    <div class="step well">
-      Step 4
-    </div>
-    <div class="step well">
-      Step 5
-    </div>
-    <div class="step well">
-      Step 6
-    </div>
-
-    <button class="action back btn btn-info">Back</button>
-    <button class="action next btn btn-info">Next</button>
-    <button class="action submit btn btn-success">Submit</button>
+<%= render 'maket' %>
+<div class="login-page">
+  <div class="form">
+    <h2 class="form-signin-heading">Введите данные коректно</h2>
+    <%= form_tag('testn', :class => "register-form") do  %>
+        <%= text_field_tag :name ,nil,placeholder: 'Названия теста' %>
+        <%= text_field_tag :description  ,nil,placeholder: 'Описания теста'%>
+        <%=datetime_field_tag :start_t%>
+        <%= password_field_tag :password ,nil,placeholder: 'Пароль'%>
+        <abbr title="Статус теста" ><%=select_tag :active,options_for_select([["недоступен",false],["доступен",true]])  %></abbr>
+        <%= submit_tag 'Сохранить', class: "button" %>
+    <% end %>
   </div>
+
 </div>
 
-</body>
-</html>
-<script type="text/javascript">
-  $(document).ready(function(){
-    var current = 1;
-
-    widget      = $(".step");
-    btnnext     = $(".next");
-    btnback     = $(".back");
-    btnsubmit   = $(".submit");
-
-    // Init buttons and UI
-    widget.not(':eq(0)').hide();
-    hideButtons(current);
-    setProgress(current);
-
-    // Next button click action
-    btnnext.click(function(){
-      if(current < widget.length){
-        widget.show();
-        widget.not(':eq('+(current++)+')').hide();
-        setProgress(current);
-      }
-      hideButtons(current);
-    })
-
-    // Back button click action
-    btnback.click(function(){
-      if(current > 1){
-        current = current - 2;
-        btnnext.trigger('click');
-      }
-      hideButtons(current);
-    })
-  });
-
-  // Change progress bar action
-  setProgress = function(currstep){
-    var percent = parseFloat(100 / widget.length) * currstep;
-    percent = percent.toFixed();
-    $(".progress-bar").css("width",percent+"%").html(percent+"%");
-  }
-
-  // Hide buttons according to the current step
-  hideButtons = function(current){
-    var limit = parseInt(widget.length);
-
-    $(".action").hide();
-
-    if(current < limit) btnnext.show();
-    if(current > 1) btnback.show();
-    if (current == limit) { btnnext.hide(); btnsubmit.show(); }
-  }
-  </script>

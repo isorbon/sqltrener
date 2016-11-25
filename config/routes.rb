@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'tests/new'
-
   root to: 'altair#home'
   get '/signup',    to: 'users#new'
   get '/signin',    to: 'sessions#new'
@@ -30,6 +27,7 @@ Rails.application.routes.draw do
   post   'categoryd',            to: 'cats#destroy'
   post   'categoryu',            to: 'cats#update'
   post   'categorye',            to: 'cats#edit'
+
   post   'taske',            to: 'tasks#edit'
   get   'taskm',            to: 'tasks#new'
   get   'taskl',            to: 'tasks#show'
@@ -37,7 +35,13 @@ Rails.application.routes.draw do
   post   'tasku',            to: 'tasks#update'
   post   'taskd',            to: 'tasks#destroy'
 
-
-
+  get    'testn'   ,               to:'tests#new'
+  post    'testn'   ,               to:'tests#create'
+  get    'tests'   ,               to:'tests#show'
+  post    'testu'   ,               to:'tests#update'
+  post    'teste'   ,               to:'tests#edit'
+  post    'testd'   ,               to:'tests#destroy'
+  get     'tpn'                      ,to:'tpublics#new'
+  post     'tpn'                      ,to:'tpublics#create'
 end
 

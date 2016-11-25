@@ -1,47 +1,72 @@
-<%= render 'layouts/scrip' %>
+<link rel="stylesheet" href="css/styl.css">
 <style>
-  .console
-  {
-    color:  #FFFF66;
-    margin-bottom: 0%;
-    border-radius: 5px;
-    resize: none;
-    overflow-x:hidden;
-    overflow-y:hidden;
+  abbr{border-bottom: 0px dotted #8dcb36;
+  cursor: none;
   }
+
+
 </style>
 <% @use = current_user  %>
- <% if @use !=nil %>
-    <div class="console">
-    <div class="row">
-    <div class="col-md-3 col-sm-3">
+<% if @use !=nil %>
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
       <div class="user-wrapper">
-        <%= image_tag(@use.img,:class=>"img-responsive" )	  %>
-        <div class="description">
-          <h3> <%= @use.fname+' '+@use.lname %></h3>
-          <h5> <strong> <% if @use.status_user == 0 %>
-            <%=  'Студент' %>
-                <% else%>
-                <%=  'Автор' %>
-                <%end %> </strong></h5>
-          <p>
-            <%= link_to 'edit',edit_path(current_user)	,method: :post  %>
-          </p>
-          <h6>
-          LOGIN: <%=@use.login %>
-          </h6>
-          <hr />
-          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span>".html_safe, signout_path, method: :get   %>
+        <li>
+          <%= image_tag(@use.img,:class=>"img-responsive" )	  %>
+        </li>
+
+         <abbr  title="<%= @use.fname+' '+@use.lname[0..10] %>" ><h3 style="text-align: center"><%= @use.fname[0..10]+' '+@use.lname %></h3></abbr>
+        <hr/>
+        <%= link_to   "<span class=\"glyphicon glyphicon-edit\"></span> Редактировать".html_safe,edit_path(current_user)	,method: :post,:class=>"btn btn-link btn-sm" %>
+        <p>
+          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Выйти ".html_safe,edit_path(current_user)	,method: :post ,:class=>"btn btn-link btn-sm" %>
+        </p>
+        <li>
+
+      </div>
+
+        </li>
+
+      </li>
+
+    </ul>
+  </div>
+  <div id="page-content-wrapper">
+    <div class="page-content inset">
+
+      <div class="verticalCarousel">
+        <div  style="text-align: center;" class="verticalCarouselHeader">
+          <b>Доступные тесты</b>
+
         </div>
+        <ul class="verticalCarouselGroup vc_list">
+          <%@test=Test.all.where("Tests.active=false").each do|s|%>
+              <li>
+
+            <h4><%=	 s.name %></h4>
+            <p><%=	s.description%>
+
+            </p>
+                <p>
+                  <%=	s.start_t.strftime("%e-%m-%Y  %k:%M")%>
+                </p>
+            <a href="#">Пройти</a>
+          </li>
+
+          <%end %>
+        </ul>
+
       </div>
     </div>
+  </div>
 </div>
-    </div>
 <%else %>
+
     <div class="container" style="background-attachment: black;color: azure">
-          <div class="alert alert">Нет такого пользователя!!!
-            Войдите в систему !!!
-            <%= link_to "Войти", signin_path, method: :get %></p>
-          </div>
+      <div class="alert alert">Нет такого пользователя!!!
+        Войдите в систему !!!
+        <%= link_to "Войти", signin_path, method: :get %></p>
+      </div>
     </div>
- <% end %>
+<% end %>

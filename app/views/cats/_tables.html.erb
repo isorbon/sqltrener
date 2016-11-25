@@ -8,9 +8,9 @@
     -o-border-radius:  10px;
     -khtml-border-radius:10px;
   }
-
 </style>
-<div class="container">
+<div class="page-content inset">
+<div class="row">
   <table class="table table-hover">
     <thead>
     <tr>
@@ -20,6 +20,10 @@
       <th>
         Названия
       </th>
+      <th>
+Действия
+      </th>
+
     </tr>
 
     </thead>
@@ -29,19 +33,31 @@
       @cats.each do |cat| %>
         <tr>
           <td>
-            <%=
-              link_to  "#{cat.id}" ,categorye_path(cat.id),method: :post %>
+            <abbr title="Редактировать">
+              <h5>
+                <%=
+                  link_to  "#{cat.id}" ,categorye_path(Base64.encode64( Base64.encode64(cat.id.to_s))),method: :post %>
+              </h5>
+            </abbr>
+
           </td>
           <td>
-            <%= cat.name %>
+            <abbr title="<%= cat.name %>">
+              <h5>
+                <%= cat.name[0..15] %>
+              </h5>
+            </abbr>
           </td>
           <td>
-            <%= link_to  "Удалить" ,categoryd_path(cat.id),method: :post %>
+            <h5>
+              <%= link_to  "Удалить" ,categoryd_path(Base64.encode64( Base64.encode64(cat.id.to_s))),method: :post %>
+            </h5>
           </td>
         </tr>
     <% end %>
     </tbody>
   </table>
+</div>
 </div>
 
 

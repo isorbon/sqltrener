@@ -1,0 +1,15 @@
+<%= render 'maket' %>
+<div class="login-page">
+  <div class="form">
+    <h2 class="form-signin-heading">Введите данные коректно</h2>
+    <%= form_tag('testu', :class => "register-form") do  %>
+        <%= text_field_tag :name ,@test.name,placeholder: 'Названия теста' %>
+        <%= text_field_tag :description  ,@test.description,placeholder: 'Описания теста'%>
+        <%=datetime_field_tag :start_t,@test.start_t.strftime("%Y-%m-%eT%k:%M")%>
+        <%= password_field_tag :password ,nil,placeholder: 'Пароль'%>
+        <abbr title="Статус теста" ><%=select_tag :active,options_for_select([["доступен",true],["недоступен",false] ])  %></abbr>
+        <%= hidden_field_tag(:format_id ,@test.id)	  %>
+        <%= submit_tag 'Сохранить', class: "button" %>
+    <% end %>
+  </div>
+</div>

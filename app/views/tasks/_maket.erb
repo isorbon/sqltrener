@@ -38,10 +38,13 @@
           <%= @use= 'Категории задач'
               link_to @use,category_path,method: :get	%>
         </li>
-
-               <li>
-                 <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span>".html_safe, signout_path, method: :get   %>
-               </li>
+        <li>
+          <%= @use= 'Список  задач'
+              link_to @use,taskl_path,method: :get	%>
+        </li>
+        <li>
+          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span>".html_safe, signout_path, method: :get   %>
+        </li>
       </ul>
     </div>
   </div>

@@ -8,6 +8,7 @@ class CreateTasks < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.integer :time
       t.timestamps
+
     end
   end
 end

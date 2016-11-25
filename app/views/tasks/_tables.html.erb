@@ -1,5 +1,6 @@
 <style>
   table{
+    margin-top: 10%;
     background: #ffffff;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -8,10 +9,14 @@
     -o-border-radius:  10px;
     -khtml-border-radius:10px;
   }
-
 </style>
-<div class="container">
-  <table class="table table-hover">
+
+<div style="margin-left: 10%;margin-right: 10%;" class="page-content inset">
+
+  <div class="row">
+
+    <table class="table table-hover">
+
     <thead>
     <tr>
           <th>
@@ -26,7 +31,6 @@
       <th>
         Категория
       </th>
-
       <th>
       Оценка
       </th>
@@ -36,8 +40,10 @@
       <th>
         Время
       </th>
+      <th>
+        Действия
+      </th>
     </tr>
-
     </thead>
     <tbody>
     <%
@@ -45,33 +51,47 @@
       @tasks.each do |cat| %>
         <tr>
           <td>
-            <%=
-              link_to  "#{cat.id}" ,taske_path(cat.id),method: :post %>
+            <abbr title="Редактировать"><h5><%=
+              link_to  "#{cat.id}" ,taske_path(Base64.encode64( Base64.encode64(cat.id.to_s))),method: :post %>
+            </h5></abbr>
           </td>
           <td>
-            <abbr title="<%= cat.ask %>"><%= cat.ask[0,15] %></abbr>
+            <abbr title="<%= cat.ask %>"><h5><%= cat.ask[0,15] %></h5></abbr>
           </td>
           <td>
-            <abbr title="<%= cat.answer %>"><%= cat.answer[0,15] %></abbr>
+            <abbr title="<%= cat.answer %>"><h5><%= cat.answer[0,15] %></h5></abbr>
           </td>
           <td>
-            <%= cat.cat_id %>
+            <h5><%= cat.cat_id %></h5>
           </td>
           <td>
-            <%= cat.mark %>
+            <h5>
+              <%= cat.mark %>
+            </h5>
+
           </td>
           <td>
-            <%= cat.user_id %>
+            <h5>
+              <%= cat.user_id %>
+            </h5>
           </td>
           <td>
-            <%= link_to  "Удалить" ,taskd_path(cat.id),method: :post %>
+            <h5>
+              <%= cat.time %>
+            </h5>
+          </td>
+          <td>
+            <h5>
+              <%= link_to  "Удалить" ,taskd_path(Base64.encode64( Base64.encode64(cat.id.to_s))),method: :post %>
+           </h5>
+
           </td>
         </tr>
     <% end %>
     </tbody>
   </table>
 </div>
-
+</div>
 
 
 

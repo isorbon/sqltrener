@@ -1,0 +1,73 @@
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.verticalCarousel {
+  margin: 50px auto;
+  max-width: 500px;
+  background-color: #f1f1f1;
+}
+
+.verticalCarouselHeader {
+  background: #e1e1e1;
+  border-width: 0px;
+  border-style: solid;
+  padding: 15px;
+}
+
+.verticalCarouselHeader:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.verticalCarouselHeader h3 {
+  float: left;
+  margin: 0px;
+}
+
+.verticalCarouselGroup.vc_list > li {
+  margin: 15px;
+  border-width: 0px;
+  border-style: solid;
+  padding: 15px;
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+/* line 57, ../sass/style.scss */
+.verticalCarouselGroup.vc_list > li h4 {
+  margin: 0px 0px 0px;
+}
+/* line 60, ../sass/style.scss */
+.verticalCarouselGroup.vc_list > li p {
+  margin: 0px 0px 0px;
+}
+
+
+
+.vc_container {
+  overflow: hidden;
+  -moz-transition: height 0.2s ease-in;
+  -o-transition: height 0.2s ease-in;
+  -webkit-transition: height 0.2s ease-in;
+  transition: height 0.2s ease-in;
+}
+
+.vc_list {
+  margin: 0;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  list-style: none;
+  -moz-transition: -moz-transform 0.2s ease-in;
+  -o-transition: -o-transform 0.2s ease-in;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+}
+

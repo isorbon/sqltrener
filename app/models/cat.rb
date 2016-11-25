@@ -1,2 +1,3 @@
-  class Cat < ApplicationRecord
+class Cat < ApplicationRecord
+  has_many :tasks
 end

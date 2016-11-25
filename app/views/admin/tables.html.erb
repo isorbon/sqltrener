@@ -1,6 +1,7 @@
 <%= render 'tasks/maket' %>
 <style>
   table{
+    margin-top: 10%;
     background: #ffffff;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -9,17 +10,27 @@
     -o-border-radius:  10px;
     -khtml-border-radius:10px;
   }
+
 </style>
-<div class="container">
-  <table class="table table-hover">
+
+
+<%@users=User.all %>
+<div style="margin-left: 15%;margin-right: 15%;" class="page-content inset">
+
+  <div class="row">
+
+    <table class="table table-hover">
     <thead>
     <tr>
-      <% $i = 0
+      <%$i = 0
          while $i<Basic.connection.columns(@tabnam).map(&:name).length do%>
           <th>
-            <%=
-              Basic.connection.columns(@tabnam).map(&:name)[$i]
-            %></th>
+
+          <%=
+            Basic.connection.columns(@tabnam).map(&:name)[$i]
+          %>
+
+          </th>
       <%
         $i=$i+1
         end %>
@@ -31,13 +42,17 @@
           <%
             res.each do |row|%>
             <tr>
-
+              <h5>
               <% $i = 0
                  while $i<Basic.connection.columns(@tabnam).map(&:name).length do%>
+                    </h5>
                   <td>
-                    <%=
-                      row[$i]
-                    %></td>
+           <h5>
+             <%=
+               row[$i]
+             %>
+           </h5>
+                  </td>
               <%
                 $i=$i+1
                 end %>
@@ -46,5 +61,5 @@
     </tbody>
   </table>
 </div>
-
+</div>
 

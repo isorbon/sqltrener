@@ -1,18 +1,17 @@
 class TasksController < ApplicationController
+  before_action :set_tasks, only: [:edit,:destroy]
   def new
-    chack_ed
     @tabnam=''
   end
   def show
-    chack_ed
+
   end
   def edit
-    chack_ed
+
   end
   def create
-    chack_ed
     @tasks = Task.new(task_params)
-    if  @tasks.save&&[:status_user]== 1
+      if  @tasks.save
         redirect_to taskl_path
       else
         render 'new'
@@ -20,30 +19,34 @@ class TasksController < ApplicationController
   end
 
   def update
-    chack_ed
-    @tasks = Task.find(params[:lenhy])
-    if  @tasks.update(task_params)&&[:status_user]== 1
-      redirect_to taskm_path
+    if  dec(params[:formati]).to_i !=0
+      @tasks =Task.find(dec(params[:formati]).to_i)
+    end
+    if  @tasks.update(task_params)
+      redirect_to taskl_path
     else
       render 'new'
     end
   end
 
   def destroy
-    if Task.delete(params[:format])&&[:status_user]== 1
-      redirect_to taskm_path
+    if @tasks.destroy
+      redirect_to taskl_path
+    else
+      render 'new'
     end
   end
 
   private
-  def chack_ed
-    if session[:user_id]!=current_user && session[:status_user]!=1
-      redirect_to home_path
+  def set_tasks
+       if  dec(params[:format]).to_i !=0
+         @tasks =Task.find(dec(params[:format]).to_i)
+       end
+        rescue ActiveRecord::RecordNotFound
+    redirect_to  taskl_path
+  end
+    def task_params
+      sgh= params.permit(:ask,:code,:mark,:cat_id,:time)
+      return {ask: sgh[:ask],answer:sgh[:code],mark:sgh[:mark],cat_id: sgh[:cat_id],user_id: current_user[:id],time: sgh[:time] }
     end
-  end
-
-  def task_params
-    sgh= params.permit(:ask,:code,:mark,:cat_id,:time)
-    return {ask: sgh[:ask],answer:sgh[:code],mark:sgh[:mark],cat_id: sgh[:cat_id],user_id: session[:user_id],time: sgh[:time] }
-  end
 end

@@ -19,8 +19,10 @@
       <li>
         <% $i = 0
             while $i<Basic.connection.tables.length do%>
-        <%= link_to Basic.connection.tables[$i],tab_path(Basic.connection.tables[$i]),method: :post,:target => "blank"
-        %>
+            <h5>
+              <%= link_to Basic.connection.tables[$i],tab_path(Base64.encode64( Base64.encode64(Basic.connection.tables[$i]))),method: :post,:target => "blank"
+              %>
+            </h5>
         <%
           $i=$i+1
           end %>
@@ -28,7 +30,7 @@
     </ul>
   </div>
   <div id="page-content-wrapper">
-    <div class="content-header">
+    <div   class="content-header">
       <h1>
         <a id="menu-toggle" href="#" class="btn btn-default"><i class="icon-reorder"></i></a>
       </h1>
