@@ -15,12 +15,11 @@
         <li>
           <%= image_tag(@use.img,:class=>"img-responsive" )	  %>
         </li>
-
          <abbr  title="<%= @use.fname+' '+@use.lname[0..10] %>" ><h3 style="text-align: center"><%= @use.fname[0..10]+' '+@use.lname %></h3></abbr>
         <hr/>
-        <%= link_to   "<span class=\"glyphicon glyphicon-edit\"></span> Редактировать".html_safe,edit_path(current_user)	,method: :post,:class=>"btn btn-link btn-sm" %>
+        <%= link_to   "<span class=\"glyphicon glyphicon-edit\"></span> Редактировать".html_safe,edit_path((Base64.encode64( Base64.encode64( session[:user_id].to_s))))	,method: :post,:class=>"btn btn-link btn-sm" %>
         <p>
-          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Выйти ".html_safe,edit_path(current_user)	,method: :post ,:class=>"btn btn-link btn-sm" %>
+          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Выйти ".html_safe,signout_path	,method: :post ,:class=>"btn btn-link btn-sm" %>
         </p>
         <li>
 
@@ -51,6 +50,7 @@
                 <p>
                   <%=	s.start_t.strftime("%e-%m-%Y  %k:%M")%>
                 </p>
+
             <a href="#">Пройти</a>
           </li>
 

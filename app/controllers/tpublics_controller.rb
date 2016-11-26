@@ -1,19 +1,15 @@
 class TpublicsController < ApplicationController
   def new
-    chack_ed
   end
   def create
-    chack_ed
-   if  option
+   if  optio1n
       redirect_to admin_path
    else
      render 'new'
     end
   end
   private
-
   def option
-    kat
     taskid=id_task
     $p=0
     (1..params[:count].to_i).each do |i|
@@ -30,7 +26,7 @@ class TpublicsController < ApplicationController
     out=[]
     $j=0
     while $j<params[:count].to_i
-      out.push(kat)
+      out.push(id_t)
       $j=$j+1
     end
     out=out.join(',').split(',')
@@ -38,49 +34,26 @@ class TpublicsController < ApplicationController
     return out
   end
 
-  def getv_(id)
-    return params["id#{id}"]
-  end
-  def ran(n,k)
-    srand
-    t=[]
-    t=n.sample(k)
-    if t.uniq! == nil
-      return t
-    else
-      return n.sample(k)
-    end
-  end
-
-  def get_(id)
+  def get_(id,k) # получение случайных задании по котегориям
     tl=[]
     tp=Task.joins(:cat).select(:id).group("tasks.id,cats.id").where("cats.id=#{id}")
-    tp.each do |cat|
-      tl.push(cat.id)
+    tp.each do |ids|
+      tl.push(ids.id)
     end
-    return tl
+    return tl.sample(k)
   end
 
-  def kat
-    out=[]
+  def id_t # получение категории и знаяения
     @count_z=0
-    tp=Cat.joins(:tasks).select(:cat_id).group("cats.id").count("Tasks.id")
-    $k=0
-    tp.each do |cat|
-      out.push(ran(ran(get_(cat[0]),getv_($k.to_s).to_i),getv_($k.to_s).to_i))
-      @count_z+=getv_($k.to_s).to_i
-      $k+=1
-    end
-    return out
+    out=[]
+     tp=Cat.joins(:tasks).select('cats.id as cats_id,cats.name as cats_name,count(tasks.id)as count_task_id').group('cats.name')
+      tp.each do |cat|
+        out.append(get_(cat.cats_id,params[Digest::SHA1.hexdigest(cat.cats_id.to_s)].to_i))
+        @count_z+=params[Digest::SHA1.hexdigest(cat.cats_id.to_s)].to_i
+      end
+      return out
   end
 
-  def chack_ed
-    if session[:user_id]!=nil && current_user[:id]!=nil && session[:status_user]!=1
-      redirect_to admin_path
-    else
-      redirect_to home_path
-    end
-  end
 
 end
 

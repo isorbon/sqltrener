@@ -34,24 +34,24 @@
     </thead>
     <tbody>
     <%
-      tp=Cat.joins(:tasks).group("cats.name").count("Tasks.id")
-$k=0
+      tp=Cat.joins(:tasks).select('cats.id as cats_id,cats.name as cats_name,count(tasks.id)as count_task_id').group('cats.name')
       tp.each do |cat| %>
         <tr>
           <td>
-            <abbr title=" <%= cat[0] %>" > <h5><%= cat[0][0..8] %></h5> </abbr>
+            <abbr title=" <%= cat.cats_name %>" > <h5><%= cat.cats_name[0..8] %></h5> </abbr>
           </td>
           <td>
-           <h5> <%= cat[1] %></h5>
+           <h5> <%= cat.count_task_id %></h5>
           </td>
           <td>
             <h5>
-              <%= text_field_tag("id"+$k.to_s ,nil,placeholder: 'число' ) %>
+              <%= text_field_tag(Digest::SHA1.hexdigest(cat.cats_id.to_s),nil,placeholder: 'число' ) %>
             </h5>
           </td>
         </tr>
-    <% $k+=1
-      end %>
+    <%
+
+       end %>
     </tbody>
   </table>
  <%= submit_tag( "генерировать", class: "button") %>

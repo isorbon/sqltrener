@@ -5,8 +5,8 @@
   <div class="form">
         <%= form_tag('db', :method => "post", :class => "login-form") do  %>
         <%= select_tag :dtp, "<option >присоединить бд</option>
-        <option value='sj1'>Основной</option>
-        <option value='sj2'>Теневой</option>".html_safe%>
+        <option value='#{Base64.encode64( Base64.encode64('sj1'))}'>Основной</option>
+        <option value='#{Base64.encode64( Base64.encode64('sj2'))}'>Теневой</option>".html_safe%>
         <%= select_tag :gemn, "<option >Выберите  субд</option>
         <option value='mysql2'>Mysql</option>
         <option value='pg'>postgres</option>

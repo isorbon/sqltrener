@@ -43,5 +43,7 @@ Rails.application.routes.draw do
   post    'testd'   ,               to:'tests#destroy'
   get     'tpn'                      ,to:'tpublics#new'
   post     'tpn'                      ,to:'tpublics#create'
+
+  get 'start' ,to:  'studet_t#new'
 end
 
